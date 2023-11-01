@@ -44,9 +44,9 @@ int main()
 	bilinear(imgOut_down0, height, width, channel, imgOut_up1);
 	PSNR_up = imagePSNR(imgIn,imgOut_up0, 3*960*720);
 	PSNR_bilinear = imagePSNR(imgIn,imgOut_up1, 3*960*720);
-    	prinf("======PSNR RESULT======\n");
+    	printf("======PSNR RESULT======\n");
 	printf("%f, %f\n",PSNR_up,PSNR_bilinear);
-	prinf("=======================");
+	printf("=======================\n");
 				
 	stbi_write_bmp("image_down.bmp", width/3, height/3, channel, imgOut_down0);
 	stbi_write_bmp("image_up.bmp", width, height, channel, imgOut_up0);
