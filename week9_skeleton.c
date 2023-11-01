@@ -20,7 +20,19 @@ int main()
 	int width;
 	int channel;
 
-    float PSNR_up,PSNR_bilinear;
+    	float PSNR_up,PSNR_bilinear;
+
+	char command;
+
+ 	printf("Take a picture? (y/n)\n");
+ 	scanf("%c", &command);
+
+ 	if(command == 'n')
+ 		exit(1);
+
+
+ 	printf("Cheeze !\r\n");
+	system("raspistill -w 960 -h 720 -t 10 -o src.bmp");
 
  	unsigned char* imgIn = stbi_load("src.bmp", &width, &height, &channel, 3);
 	unsigned char* imgOut_down0 = (unsigned char*) malloc (sizeof(unsigned char)*3*320*240);
@@ -32,7 +44,7 @@ int main()
 	bilinear(imgOut_down0, height, width, channel, imgOut_up1);
 	PSNR_up = imagePSNR(imgIn,imgOut_up0, 3*960*720);
 	PSNR_bilinear = imagePSNR(imgIn,imgOut_up1, 3*960*720);
-    printf("%f, %f\n",PSNR_up,PSNR_bilinear);
+    	printf("%f, %f\n",PSNR_up,PSNR_bilinear);
 				
 	stbi_write_bmp("image_down.bmp", width/3, height/3, channel, imgOut_down0);
 	stbi_write_bmp("image_up.bmp", width, height, channel, imgOut_up0);
@@ -48,17 +60,17 @@ int main()
 }
 
 void downsampling (unsigned char* in, int const height, int const width, int const channel, unsigned char* out) { 
-
+ /*          PUT YOUR CODE HERE          */
 }
 
 void upsampling (unsigned char* in, int const height, int const width, int const channel, unsigned char* out) {
-
+ /*          PUT YOUR CODE HERE          */
 }
 
 void bilinear (unsigned char* in, int const height, int const width, int const channel, unsigned char* out) { 
-
+ /*          PUT YOUR CODE HERE          */
 }
 
 double imagePSNR(unsigned char* frame1, unsigned char* frame2, unsigned int size){  
-
+ /*          PUT YOUR CODE HERE          */
 }
